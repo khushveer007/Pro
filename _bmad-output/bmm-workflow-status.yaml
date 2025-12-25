@@ -1,0 +1,87 @@
+# Workflow Status - BMad Method Brownfield
+# Generated: 2025-12-24
+
+generated: "2025-12-24"
+project: "Pro"
+project_type: "brownfield"
+selected_track: "method"
+field_type: "brownfield"
+workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-brownfield.yaml"
+
+workflow_status:
+  - id: "document-project"
+    name: "Document Project"
+    status: "completed"
+    required: true
+    phase: "prerequisite"
+    agent: "analyst"
+    command: "/bmad-bmm-workflows-document-project"
+    description: "Analyze existing codebase and generate documentation"
+
+  - id: "prd"
+    name: "Product Requirements Document"
+    status: "completed"
+    required: true
+    phase: "planning"
+    agent: "pm"
+    command: "/bmad-bmm-workflows-create-prd"
+    description: "Define requirements for fixes and optimizations"
+    output_file: "_bmad-output/prd.md"
+    completed_at: "2025-12-25"
+
+  - id: "create-ux-design"
+    name: "UX Design"
+    status: "pending"
+    required: false
+    phase: "planning"
+    agent: "ux-designer"
+    command: "/bmad-bmm-workflows-create-ux-design"
+    description: "Design UI/UX changes (conditional)"
+
+  - id: "create-architecture"
+    name: "Architecture"
+    status: "completed"
+    required: true
+    phase: "solutioning"
+    agent: "architect"
+    command: "/bmad-bmm-workflows-create-architecture"
+    description: "Design technical solution and integration"
+
+  - id: "create-epics-and-stories"
+    name: "Epics & Stories"
+    status: "completed"
+    required: true
+    phase: "solutioning"
+    agent: "pm"
+    command: "/bmad-bmm-workflows-create-epics-and-stories"
+    description: "Break down work into implementable stories"
+    completed_at: "2025-12-25"
+
+  - id: "test-design"
+    name: "Test Design"
+    status: "completed"
+    required: false
+    phase: "solutioning"
+    agent: "tea"
+    command: "/bmad-bmm-workflows-testarch-test-design"
+    description: "Plan testing strategy (recommended)"
+    completed_at: "2025-12-25"
+
+  - id: "implementation-readiness"
+    name: "Implementation Readiness"
+    status: "completed"
+    required: true
+    phase: "solutioning"
+    agent: "architect"
+    command: "/bmad-bmm-workflows-check-implementation-readiness"
+    description: "Validate plan before coding"
+    completed_at: "2025-12-25"
+
+  - id: "sprint-planning"
+    name: "Sprint Planning"
+    status: "pending"
+    required: true
+    phase: "implementation"
+    agent: "sm"
+    command: "/bmad-bmm-workflows-sprint-planning"
+    description: "Prepare sprint backlog"

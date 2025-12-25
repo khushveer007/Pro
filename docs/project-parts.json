@@ -1,0 +1,17 @@
+{
+    "repository_type": "monolith",
+    "project_parts": [
+        {
+            "id": "web",
+            "name": "Web Client",
+            "root_path": "/home/opsa/Work/Pro",
+            "project_type_id": "web",
+            "detected_tech": {
+                "framework": "vanilla",
+                "language": "javascript",
+                "style": "css"
+            }
+        }
+    ],
+    "integration_points": []
+}
