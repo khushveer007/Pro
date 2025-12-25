@@ -1,0 +1,59 @@
+:root {
+  /* Colors - Extracted from style.css */
+  --color-background: #000000;
+  --color-primary: #453E16;
+  /* Brand color/Green/Brown */
+  --color-secondary: #e0d0a0;
+  /* Gold hover */
+  --color-text: #ffffff;
+  --color-text-dark: #000000;
+  --color-muted: #888888;
+  --color-timer: #e0e0e0;
+
+  /* Fonts - Placeholders until layout.tsx injection */
+  --font-army: 'ArmyRust', sans-serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-stencil: 'Black Ops One', sans-serif;
+
+  /* Base Typography */
+  --font-size-base: 16px;
+  /* Mobile-first minimum */
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  /* Primary font, injected by next/font */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
