@@ -18,7 +18,7 @@ _This file contains critical rules and patterns that AI agents must follow when 
 ## Technology Stack & Versions
 
 **Core Framework:**
-- **Next.js:** v15.x (App Router)
+- **Next.js:** v16.x (App Router)
 - **React:** v19.x
 - **TypeScript:** v5.x (Strict Mode)
 
