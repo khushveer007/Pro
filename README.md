@@ -1,4 +1,10 @@
+# Pro | Projections
+
+[![Vercel Deploy](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://pro-nu-orcin.vercel.app)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+**Live URL:** [https://pro-nu-orcin.vercel.app](https://pro-nu-orcin.vercel.app)
 
 ## Getting Started
 
