@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Black_Ops_One } from "next/font/google";
 import localFont from "next/font/local";
+import { Header } from "@/components/sections/Header";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -33,10 +34,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  /* Combined font variables for global availability */
   return (
     <html lang="en">
       <body className={`${cinzel.variable} ${blackOpsOne.variable} ${armyRust.variable}`}>
+        <Header />
         {children}
       </body>
     </html>

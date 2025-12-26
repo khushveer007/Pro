@@ -1,0 +1,148 @@
+.countdownContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 1rem;
+    /* Removed background/border to let SVGs shine */
+}
+
+/* Loading Badge */
+.loadingBadge {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -25px;
+    /* Overlap with timer frame */
+    z-index: 10;
+}
+
+.loadingBg {
+    height: 50px;
+    width: auto;
+}
+
+.loadingContent {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.loadingLogo {
+    height: 16px;
+    width: auto;
+}
+
+.loadingText {
+    font-family: var(--font-stencil), sans-serif;
+    font-size: 0.8rem;
+    color: #0ff;
+    /* Cyan/Teal */
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+/* Main Timer */
+.timerWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    max-width: 800px;
+    /* Adjust based on SVG aspect ratio */
+}
+
+.timerBg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.timerValues {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* Even spacing within the frame */
+    width: 80%;
+    /* Fit inside the inner area of the SVG */
+    margin-top: 4px;
+    /* Optical adjustment */
+}
+
+.timeBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.number {
+    font-family: var(--font-stencil), sans-serif;
+    font-size: clamp(1.2rem, 4vw, 3.5rem);
+    color: #fff;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+.label {
+    font-family: var(--font-cinzel), serif;
+    font-size: clamp(0.5rem, 1vw, 0.9rem);
+    color: #ccc;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.separator {
+    font-family: var(--font-cinzel), serif;
+    /* Changed to Cinzel for thinner look */
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: #888;
+    font-weight: 300;
+    margin-top: -10px;
+}
+
+/* Hearts */
+.heartsContainer {
+    margin-top: -15px;
+    /* Overlap bottom of timer frame */
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.heart {
+    color: #d00;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #f00;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .loadingBg {
+        height: 40px;
+    }
+
+    .timerWrapper {
+        max-width: 350px;
+    }
+
+    .timerValues {
+        width: 85%;
+    }
+
+    .number {
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    }
+}
