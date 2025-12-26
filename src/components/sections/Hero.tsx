@@ -1,20 +1,30 @@
 import styles from './Hero.module.css';
 import Countdown from '@/components/ui/Countdown';
-import bgPoster from '@/../public/assets/Background1.png';
+import bgPoster from '../../../public/assets/Background1.png';
+import Image from 'next/image';
+
+const VIDEO_PATH = '/assets/BG1.mp4';
 
 export default function Hero() {
     return (
         <section className={styles.hero} data-testid="hero-section">
             <div className={styles.bgContainer}>
+                <Image
+                    src={bgPoster}
+                    alt="Hero Background"
+                    placeholder="blur"
+                    fill
+                    priority
+                    className={styles.posterImage}
+                />
                 <video
                     autoPlay
                     muted
                     loop
                     playsInline
                     className={styles.bgVideo}
-                    poster={bgPoster.src}
                 >
-                    <source src="/assets/BG1.mp4" type="video/mp4" />
+                    <source src={VIDEO_PATH} type="video/mp4" />
                 </video>
                 <div className={styles.vignette}></div>
             </div>
