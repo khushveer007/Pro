@@ -46,8 +46,8 @@ development_status:
   1-3-visual-testing-infrastructure: done
   epic-1-retrospective: done
 
-  epic-2: backlog
-  2-1-global-styles-typography-migration: backlog
+  epic-2: in-progress
+  2-1-global-styles-typography-migration: done
   2-2-responsive-header-navigation: backlog
   2-3-hero-section-layouts: backlog
   epic-2-retrospective: optional

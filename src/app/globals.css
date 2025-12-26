@@ -1,54 +1,102 @@
 :root {
-  /* Colors - Extracted from style.css */
+  /* ======================
+     COLORS
+     ====================== */
   --color-background: #000000;
   --color-primary: #453E16;
-  /* Brand color/Green/Brown */
   --color-secondary: #e0d0a0;
-  /* Gold hover */
   --color-text: #ffffff;
   --color-text-dark: #000000;
   --color-muted: #888888;
   --color-timer: #e0e0e0;
+  --color-timer-digit: #ffffff;
+  --color-year-stroke: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-shadow-timer: rgba(0, 0, 0, 0.5);
 
-  /* Fonts - Placeholders until layout.tsx injection */
-  --font-army: 'ArmyRust', sans-serif;
-  --font-cinzel: 'Cinzel', serif;
-  --font-stencil: 'Black Ops One', sans-serif;
+  /* ======================
+     TYPOGRAPHY
+     ====================== */
+  /* Font variables injected by next/font in layout.tsx */
+  /* --font-army, --font-cinzel, --font-stencil are set automatically */
 
-  /* Base Typography */
+  /* Font Size Scale - Mobile-first responsive clamps */
   --font-size-base: 16px;
-  /* Mobile-first minimum */
+  --font-size-title: clamp(4rem, 16vw, 11rem);
+  --font-size-year: clamp(3rem, 8.5vw, 6rem);
+  --font-size-timer: clamp(1.5rem, 4vw, 3.5rem);
+  --font-size-label: clamp(0.6rem, 1.2vw, 0.9rem);
+  --font-size-separator: clamp(2rem, 4vw, 3rem);
+  --font-size-nav: 1.1rem;
 
-  /* Spacing */
+  /* Line Height Scale (per legacy L224, L242, L330) */
+  --line-height-tight: 0.8;
+  --line-height-normal: 1;
+  --line-height-relaxed: 1.5;
+
+  /* Letter Spacing (per legacy L225) */
+  --letter-spacing-title: 2px;
+
+  /* ======================
+     SHADOWS & FILTERS
+     ====================== */
+  --shadow-timer-bg: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.6));
+
+  /* ======================
+     Z-INDEX SCALE
+     ====================== */
+  --z-background: 0;
+  --z-bg-layer-1: 1;
+  --z-bg-layer-2: 2;
+  --z-bg-layer-3: 3;
+  --z-frame: 5;
+  --z-corner: 10;
+  --z-decoration: 20;
+  --z-content: 30;
+  --z-sticky-nav: 1000;
+  --z-modal: 2000;
+
+  /* ======================
+     SPACING SCALE
+     ====================== */
+  --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 48px;
 }
 
-/* CSS Reset */
+/* ======================
+   CSS RESET
+   ====================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
+  width: 100%;
+  height: 100%;
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-cinzel), 'Cinzel', serif;
-  /* Primary font, injected by next/font */
-  line-height: 1.5;
+  font-family: var(--font-cinzel), serif;
+  line-height: var(--line-height-relaxed);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
+/* ======================
+   ASSET RESET
+   ====================== */
 img,
 picture,
 video,
@@ -56,4 +104,16 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+}
+
+/* ======================
+   UTILITIES
+   ====================== */
+.text-stroke-year {
+  -webkit-text-stroke: 2px var(--color-year-stroke);
+  paint-order: stroke fill;
+}
+
+.text-shadow-base {
+  text-shadow: 0px 4px 10px var(--color-shadow);
 }
