@@ -9,6 +9,7 @@
     overflow: hidden;
     padding-top: 60px;
     /* Space for fixed header */
+    --delay-decoration-reveal: 2s;
 }
 
 .bgContainer {
@@ -18,6 +19,13 @@
     width: 100%;
     height: 100%;
     z-index: -1;
+    transition: transform 2s ease-out;
+}
+
+.posterImage {
+    object-fit: cover;
+    z-index: -1;
+    transition: transform 2s ease-out;
 }
 
 .bgVideo {
@@ -25,7 +33,19 @@
     height: 100%;
     object-fit: cover;
     transform: scale(1.1);
+    transition: transform 2s ease-out, opacity 1s ease-in;
+    opacity: 0;
     /* Slight zoom to avoid edges */
+}
+
+.videoLoaded {
+    opacity: 1;
+}
+
+/* Zoomed Out State - Applied to container or children */
+.bgZoomedOut .bgVideo,
+.bgZoomedOut .posterImage {
+    transform: scale(1) !important;
 }
 
 .vignette {
@@ -47,12 +67,222 @@
     flex-direction: column;
     align-items: center;
     padding: 0 1rem;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
 }
+
+.contentShiftUp {
+    transform: translateY(-30vh);
+    opacity: 0;
+}
+
+/* Background Layers */
+.bgBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    transform: scale(1.5);
+    transform-origin: bottom left;
+    transition: transform 2s ease-out;
+}
+
+.bgBottomLayer3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    transform: scale(1.5);
+    transform-origin: bottom right;
+    transition: transform 2s ease-out;
+}
+
+.bgZoomedOut .bgBottom,
+.bgZoomedOut .bgBottomLayer3 {
+    transform: scale(1) !important;
+}
+
+/* Boundaries */
+.boundary {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.boundary img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.boundaryTop {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.boundaryBottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.boundaryLeft {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: auto;
+}
+
+.boundaryRight {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+}
+
+/* Corners */
+.corner {
+    position: absolute;
+    width: 12vw;
+    max-width: 140px;
+    z-index: 10;
+}
+
+.corner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cornerTopLeft {
+    top: 0;
+    left: 0;
+}
+
+.cornerTopRight {
+    top: 0;
+    right: 0;
+}
+
+.cornerBottomLeft {
+    bottom: 0;
+    left: 0;
+}
+
+.cornerBottomRight {
+    bottom: 0;
+    right: 0;
+}
+
+/* Mobile responsive fixes for frame */
+@media (max-width: 768px) {
+    .corner {
+        width: 18vw;
+        max-width: 80px;
+    }
+
+    .boundaryTop,
+    .boundaryBottom {
+        width: 100vw;
+        height: 35px;
+        left: 0;
+    }
+
+    .boundaryLeft {
+        height: 100vh;
+        width: 35px;
+        top: 0;
+        left: 0;
+    }
+
+    .boundaryRight {
+        height: 100vh;
+        width: 35px;
+        top: 0;
+        right: -1.5px;
+    }
+
+    .boundary img {
+        object-fit: fill;
+        min-width: 0;
+        min-height: 0;
+    }
+}
+
+/* Frame Group Animation */
+.frameGroup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    transition: transform 2.5s ease-in-out, opacity 2.5s ease-in-out;
+}
+
+.frameZoomed {
+    transform: scale(5);
+    opacity: 0;
+}
+
+/* Corner Decorations */
+.decorationCorner {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    pointer-events: none;
+    max-width: 30vw;
+    height: auto;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    will-change: opacity, transform;
+}
+
+.decorationBottomLeft {
+    left: 0;
+    transform: translate(-100%, 100%);
+}
+
+.decorationBottomRight {
+    right: -40px;
+    transform: translate(100%, 100%);
+}
+
+/* Active State for Decorations */
+.stateVisible {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition-delay: var(--delay-decoration-reveal);
+}
+
+/* Exited State for Decorations */
+.stateExited.decorationBottomLeft {
+    opacity: 0;
+    transform: translate(-100%, 100%);
+    transition: all 1.5s ease-out;
+    transition-delay: 0s;
+}
+
+.stateExited.decorationBottomRight {
+    opacity: 0;
+    transform: translate(100%, 100%);
+    transition: all 1.5s ease-out;
+    transition-delay: 0s;
+}
+
 
 .title {
     font-family: var(--font-army), sans-serif;
     font-size: clamp(3rem, 12vw, 8rem);
-    color: #453E16;
+    color: var(--color-primary);
     /* Olive Green */
     text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
     margin: 0;
@@ -63,8 +293,8 @@
 .subtitle {
     font-family: var(--font-army), sans-serif;
     font-size: clamp(2rem, 8vw, 4.5rem);
-    color: #000;
-    -webkit-text-stroke: 1px #fff;
+    color: var(--color-text-dark);
+    -webkit-text-stroke: 1px var(--color-text);
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
     margin: -10px 0 20px 0;
     line-height: 1;

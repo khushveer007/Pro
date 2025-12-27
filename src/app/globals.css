@@ -14,6 +14,8 @@
    --color-shadow: rgba(0, 0, 0, 0.5);
    --color-shadow-timer: rgba(0, 0, 0, 0.5);
    --color-border-subtle: rgba(255, 255, 255, 0.1);
+   --color-cyan: #00ffff;
+   --color-red: #dd0000;
 
    /* ======================
      TYPOGRAPHY
