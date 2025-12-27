@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from './Header.module.css';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const NAVIGATION_LINKS = [
     { name: 'Home', href: '/', alwaysVisible: true },
@@ -13,6 +14,7 @@ const NAVIGATION_LINKS = [
 
 export function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { hasScrolledPastEntrance } = useScrollReveal();
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -23,7 +25,9 @@ export function Header() {
     };
 
     return (
-        <header className={styles.header}>
+        <header 
+            className={`${styles.header} ${hasScrolledPastEntrance ? styles.headerVisible : ''}`}
+        >
             <nav className={styles.nav}>
                 {/* Desktop Navigation */}
                 <ul className={styles.navListDesktop}>

@@ -43,7 +43,7 @@
 .loadingText {
     font-family: var(--font-stencil), sans-serif;
     font-size: 0.8rem;
-    color: #0ff;
+    color: var(--color-cyan);
     /* Cyan/Teal */
     letter-spacing: 2px;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
@@ -90,7 +90,7 @@
 .number {
     font-family: var(--font-stencil), sans-serif;
     font-size: clamp(1.2rem, 4vw, 3.5rem);
-    color: #fff;
+    color: var(--color-text);
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
     line-height: 1;
 }
@@ -98,7 +98,8 @@
 .label {
     font-family: var(--font-cinzel), serif;
     font-size: clamp(0.5rem, 1vw, 0.9rem);
-    color: #ccc;
+    color: var(--color-timer);
+    /* Approx match for #ccc */
     text-transform: uppercase;
     font-weight: 700;
     margin-top: 5px;
@@ -108,7 +109,7 @@
     font-family: var(--font-cinzel), serif;
     /* Changed to Cinzel for thinner look */
     font-size: clamp(1.5rem, 4vw, 3rem);
-    color: #888;
+    color: var(--color-muted);
     font-weight: 300;
     margin-top: -10px;
 }
@@ -123,9 +124,9 @@
 }
 
 .heart {
-    color: #d00;
+    color: var(--color-red);
     font-size: 1.2rem;
-    text-shadow: 0 0 5px #f00;
+    text-shadow: 0 0 5px var(--color-red);
 }
 
 /* Mobile Adjustments */

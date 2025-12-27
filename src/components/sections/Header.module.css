@@ -9,7 +9,9 @@
     position: fixed;
     top: 15px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-100px); /* Initially hidden above */
+    opacity: 0;
+    pointer-events: none;
     z-index: var(--z-sticky-nav);
 
     /* Pill shape styling */
@@ -21,7 +23,16 @@
     padding: 5px 15px;
     min-width: 250px;
     max-width: 95%;
+
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
+
+.headerVisible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 .nav {
     display: flex;

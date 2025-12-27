@@ -1,39 +1,25 @@
-'use client';
-
 import Image from 'next/image';
 import styles from './Countdown.module.css';
 import timerElement from '@/../public/assets/Timer Element.svg';
 import loadingContainer from '@/../public/assets/Loading container.svg';
 import loadingLogo from '@/../public/assets/Loading logo.svg';
-import { useCountdown } from '@/hooks/useCountdown';
-import { TARGET_DATE } from '@/lib/constants';
 
-import CountdownSkeleton from './CountdownSkeleton';
-
-export default function Countdown() {
-    const { timeLeft, isClient } = useCountdown(TARGET_DATE);
-
-    if (!isClient) {
-        return <CountdownSkeleton />;
-    }
-
+export default function CountdownSkeleton() {
     return (
-        <div 
-            className={styles.countdownContainer} 
-            role="timer" 
-            aria-label={`Time remaining until ${new Date(TARGET_DATE).getFullYear()}`}
-        >
+        <div className={styles.countdownContainer} data-testid="countdown-skeleton">
             {/* Loading Badge Section */}
             <div className={styles.loadingBadge}>
                 <Image
                     src={loadingContainer}
-                    alt="Loading Frame"
+                    alt=""
+                    aria-hidden="true"
                     className={styles.loadingBg}
                 />
                 <div className={styles.loadingContent}>
                     <Image
                         src={loadingLogo}
-                        alt="Loading Logo"
+                        alt=""
+                        aria-hidden="true"
                         className={styles.loadingLogo}
                     />
                 </div>
@@ -43,29 +29,30 @@ export default function Countdown() {
             <div className={styles.timerWrapper}>
                 <Image
                     src={timerElement}
-                    alt="Timer Frame"
+                    alt=""
+                    aria-hidden="true"
                     className={styles.timerBg}
                     priority
                 />
 
                 <div className={styles.timerValues}>
                     <div className={styles.timeBlock}>
-                        <span className={styles.number}>{String(timeLeft.days).padStart(2, '0')}</span>
+                        <span className={styles.number}>00</span>
                         <span className={styles.label}>Days</span>
                     </div>
                     <span className={styles.separator}>:</span>
                     <div className={styles.timeBlock}>
-                        <span className={styles.number}>{String(timeLeft.hours).padStart(2, '0')}</span>
+                        <span className={styles.number}>00</span>
                         <span className={styles.label}>Hours</span>
                     </div>
                     <span className={styles.separator}>:</span>
                     <div className={styles.timeBlock}>
-                        <span className={styles.number}>{String(timeLeft.minutes).padStart(2, '0')}</span>
+                        <span className={styles.number}>00</span>
                         <span className={styles.label}>Minutes</span>
                     </div>
                     <span className={styles.separator}>:</span>
                     <div className={styles.timeBlock}>
-                        <span className={styles.number}>{String(timeLeft.seconds).padStart(2, '0')}</span>
+                        <span className={styles.number}>00</span>
                         <span className={styles.label}>Seconds</span>
                     </div>
                 </div>
