@@ -33,8 +33,13 @@
     height: 100%;
     object-fit: cover;
     transform: scale(1.1);
-    transition: transform 2s ease-out;
+    transition: transform 2s ease-out, opacity 1s ease-in;
+    opacity: 0;
     /* Slight zoom to avoid edges */
+}
+
+.videoLoaded {
+    opacity: 1;
 }
 
 /* Zoomed Out State - Applied to container or children */

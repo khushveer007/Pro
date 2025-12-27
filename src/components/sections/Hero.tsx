@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 
 import styles from './Hero.module.css';
 import Countdown from '@/components/ui/Countdown';
@@ -28,6 +29,12 @@ const VIDEO_PATH = '/assets/BG1.mp4';
 
 export default function Hero() {
     const { hasScrolledPastEntrance, hasScrolledPastExit } = useScrollReveal();
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [shouldMountVideo, setShouldMountVideo] = useState(false);
+
+    useEffect(() => {
+        setShouldMountVideo(true);
+    }, []);
 
     return (
         <section className={styles.hero} data-testid="hero-section">
@@ -41,16 +48,19 @@ export default function Hero() {
                     priority
                     className={styles.posterImage}
                 />
-                <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className={styles.bgVideo}
-                >
-                    <source src={VIDEO_PATH} type="video/mp4" />
-                </video>
-                
+                {shouldMountVideo && (
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className={`${styles.bgVideo} ${isVideoLoaded ? styles.videoLoaded : ''}`}
+                        onLoadedData={() => setIsVideoLoaded(true)}
+                    >
+                        <source src={VIDEO_PATH} type="video/mp4" />
+                    </video>
+                )}
+
                 {/* Layered Background Elements */}
                 <div className={styles.bgBottom}>
                     <Image src={bgLayer2} alt="" aria-hidden="true" />
@@ -94,13 +104,13 @@ export default function Hero() {
             </div>
 
             {/* Interactive Decorations */}
-            <div 
+            <div
                 className={`${styles.decorationCorner} ${styles.decorationBottomLeft} ${hasScrolledPastEntrance ? styles.stateVisible : ''} ${hasScrolledPastExit ? styles.stateExited : ''}`}
                 data-testid="decoration-left"
             >
                 <Image src={decoLeft} alt="" aria-hidden="true" />
             </div>
-            <div 
+            <div
                 className={`${styles.decorationCorner} ${styles.decorationBottomRight} ${hasScrolledPastEntrance ? styles.stateVisible : ''} ${hasScrolledPastExit ? styles.stateExited : ''}`}
                 data-testid="decoration-right"
             >
